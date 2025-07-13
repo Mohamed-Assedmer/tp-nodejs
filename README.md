@@ -140,8 +140,17 @@ _Votre réponse pour l'exercice 4 :_
 
 ```
 Expliquez votre solution ici
-[Ajoutez vos captures d'écran]
+- 🔁 Ajout d’un hook `useIntersectionObserver` qui observe un élément en bas de la liste et déclenche `loadMore()` si visible.
+- 🧠 Ce hook est utilisé dans `PostList` uniquement si le mode scroll infini est activé (`infiniteScroll`).
+- 📦 L’état `hasMore` est géré dans le hook `usePosts`, basé sur la réponse de l’API (nombre de posts renvoyés).
+- 🏷️ Le clic sur un tag déclenche `onTagClick`, et on utilise `setTag(tag)` dans `App.js` pour filtrer les posts via le hook `usePosts`.
+- 🪪 Le composant `PostDetails` affiche un post sélectionné avec titre, contenu, réactions (likes/dislikes), utilisateur, tags.
+- 🖱️ Le clic sur un post déclenche `onPostClick`, qui définit l’état `selectedPost` dans `App.js` et rend conditionnellement `PostDetails`.
+- ⚙️ L’objet `reactions` est correctement destructuré pour éviter les erreurs React (pas de rendu direct d’objet dans JSX).
 ```
+
+![Résultat Exercice 4 Select post](./screenshots/exercice4-details.png)
+![Résultat Exercice 4 Select post](./screenshots/exercice4-pagination.png)
 
 ## Structure détaillée du projet
 

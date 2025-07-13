@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 // TODO: Exercice 3 - Importer useTheme
 // TODO: Exercice 4 - Importer useIntersectionObserver
 import LoadingSpinner from './LoadingSpinner';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
+
 
 /**
  * Composant d'affichage de la liste des posts
@@ -26,6 +28,9 @@ function PostList({
   // TODO: Exercice 3 - Utiliser le hook useTheme
   
   // TODO: Exercice 4 - Utiliser useIntersectionObserver pour le défilement infini
+  const [triggerRef, isVisible] = useIntersectionObserver({
+    enabled: infiniteScroll && hasMore,
+  });
   
   // TODO: Exercice 3 - Utiliser useCallback pour les gestionnaires d'événements
   const handlePostClick = (post) => {
@@ -42,6 +47,11 @@ function PostList({
   };
   
   // TODO: Exercice 1 - Gérer le cas où il n'y a pas de posts
+  useEffect(() => {
+    if (isVisible && onLoadMore) {
+      onLoadMore();
+    }
+  }, [isVisible, onLoadMore]);
   
   return (
     <div className="post-list">
@@ -75,6 +85,18 @@ function PostList({
       {loading && <LoadingSpinner />}
       
       {/* TODO: Exercice 4 - Ajouter la référence pour le défilement infini */}
+      {infiniteScroll && hasMore && (
+        <div ref={triggerRef} style={{ height: 1 }} />
+      )}
+
+      {!infiniteScroll && hasMore && (
+        <div className="text-center mt-3">
+          <button className="btn btn-primary" onClick={onLoadMore}>
+            Charger plus
+          </button>
+        </div>
+      )}
+            
       
       {/* TODO: Exercice 1 - Ajouter le bouton "Charger plus" pour le mode non-infini */}
     </div>
