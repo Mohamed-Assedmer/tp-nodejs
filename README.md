@@ -60,16 +60,13 @@ Pour chaque exercice :
 
 _Votre réponse pour l'exercice 1 :_
 
-#### Démarche :
-
+```
 - Création d’un hook `usePosts` qui utilise `useEffect` pour interroger l’API
 - Intégration dans `App.jsx` avec gestion de l'état `searchTerm`
 - Passage des props à `PostList` pour affichage
 - Ajout d’un champ de recherche contrôlé dans `PostSearch.js`
 - Gestion de l’erreur et de l’état de chargement
 
-```
-Expliquez votre solution ici
 ```
 
 ![Résultat Exercice 1](./screenshots/exercice1.png)
