@@ -46,7 +46,31 @@ function PostList({
   return (
     <div className="post-list">
       {/* TODO: Exercice 1 - Afficher la liste des posts */}
-      
+      {posts.length === 0 && !loading && (
+      <p>Aucun post trouvé.</p>
+    )}
+
+    {posts.map(post => (
+      <div key={post.id} className="card mb-3" onClick={() => handlePostClick(post)}>
+        <div className="card-body">
+          <h5 className="card-title">{post.title}</h5>
+          <p className="card-text">{post.body}</p>
+          <div className="d-flex gap-2 flex-wrap">
+            {post.tags.map(tag => (
+              <span
+                key={tag}
+                className="badge bg-secondary"
+                onClick={(e) => handleTagClick(e, tag)}
+                style={{ cursor: 'pointer' }}
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))}
+  
       {/* Afficher le spinner de chargement */}
       {loading && <LoadingSpinner />}
       

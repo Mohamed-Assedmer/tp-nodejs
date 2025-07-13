@@ -5,12 +5,14 @@ Ce TP a pour objectif de mettre en pratique l'utilisation des Hooks React (useSt
 ## Installation et configuration initiale
 
 1. Cloner le dépôt :
+
 ```bash
 git clone https://github.com/pr-daaif/tp-react-hooks-blog.git
 cd tp-react-hooks-blog
 ```
 
 2. Créer votre propre dépôt sur Github et changer le remote :
+
 ```bash
 # Supprimer le remote origine
 git remote remove origin
@@ -23,11 +25,13 @@ git push -u origin main
 ```
 
 3. Installer les dépendances :
+
 ```bash
 npm install
 ```
 
 4. Lancer l'application :
+
 ```bash
 npm start
 ```
@@ -35,6 +39,7 @@ npm start
 ## Instructions pour le TP
 
 Pour chaque exercice :
+
 1. Lisez attentivement l'énoncé
 2. Implémentez la solution
 3. Testez votre implémentation (pensez à faire des copies d'écran)
@@ -44,7 +49,8 @@ Pour chaque exercice :
    - Les difficultés rencontrées et comment vous les avez résolues
 5. Commitez vos changements avec un message descriptif
 
-### Exercice 1 : État et Effets 
+### Exercice 1 : État et Effets
+
 #### Objectif : Implémenter l'affichage et la recherche de posts
 
 - [ ] 1.1 Compléter le hook `usePosts` pour récupérer les posts depuis l'API dummyjson.com
@@ -53,12 +59,22 @@ Pour chaque exercice :
 - [ ] 1.4 Documenter votre solution ici
 
 _Votre réponse pour l'exercice 1 :_
+
+#### Démarche :
+
+- Création d’un hook `usePosts` qui utilise `useEffect` pour interroger l’API
+- Intégration dans `App.jsx` avec gestion de l'état `searchTerm`
+- Passage des props à `PostList` pour affichage
+- Ajout d’un champ de recherche contrôlé dans `PostSearch.js`
+- Gestion de l’erreur et de l’état de chargement
+
 ```
 Expliquez votre solution ici
-[Ajoutez vos captures d'écran]
+![alt text](image.png)
 ```
 
 ### Exercice 2 : Hooks Personnalisés
+
 #### Objectif : Créer des hooks réutilisables
 
 - [ ] 2.1 Créer le hook `useDebounce` pour optimiser la recherche
@@ -67,12 +83,14 @@ Expliquez votre solution ici
 - [ ] 2.4 Documenter votre solution ici
 
 _Votre réponse pour l'exercice 2 :_
+
 ```
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
 ```
 
 ### Exercice 3 : Optimisation et Context
+
 #### Objectif : Gérer le thème global et optimiser les rendus
 
 - [ ] 3.1 Créer le `ThemeContext` pour gérer le thème clair/sombre
@@ -81,12 +99,14 @@ Expliquez votre solution ici
 - [ ] 3.4 Documenter votre solution ici
 
 _Votre réponse pour l'exercice 3 :_
+
 ```
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
 ```
 
 ### Exercice 4 : Fonctionnalités avancées
+
 #### Objectif : Ajouter des fonctionnalités de chargement et détail
 
 - [ ] 4.1 Implémenter le chargement infini des posts avec `useIntersectionObserver`
@@ -95,6 +115,7 @@ Expliquez votre solution ici
 - [ ] 4.4 Documenter votre solution ici
 
 _Votre réponse pour l'exercice 4 :_
+
 ```
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
@@ -150,17 +171,20 @@ Pour réaliser ce TP, vous utiliserez l'API dummyjson.com qui fournit des donné
 ## Points d'entrée API
 
 ### Récupérer tous les posts
+
 ```
 GET https://dummyjson.com/posts
 ```
 
 Paramètres de requête optionnels :
+
 - `limit` : nombre de posts à récupérer (défaut: 30)
 - `skip` : nombre de posts à sauter (pour la pagination)
 
 Exemple : `https://dummyjson.com/posts?limit=10&skip=10`
 
 ### Récupérer un post spécifique
+
 ```
 GET https://dummyjson.com/posts/{id}
 ```
@@ -168,6 +192,7 @@ GET https://dummyjson.com/posts/{id}
 Exemple : `https://dummyjson.com/posts/1`
 
 ### Rechercher des posts
+
 ```
 GET https://dummyjson.com/posts/search?q={terme}
 ```
@@ -175,6 +200,7 @@ GET https://dummyjson.com/posts/search?q={terme}
 Exemple : `https://dummyjson.com/posts/search?q=love`
 
 ### Récupérer les posts par tag
+
 ```
 GET https://dummyjson.com/posts/tag/{tag}
 ```

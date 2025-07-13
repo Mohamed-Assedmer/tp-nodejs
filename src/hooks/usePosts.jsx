@@ -29,18 +29,28 @@ function usePosts({ searchTerm = '', tag = '', limit = 10, infinite = true } = {
   };
   
   // TODO: Exercice 1 - Implémenter la fonction pour charger les posts
-  const fetchPosts = async (reset = false) => {
+  const fetchPosts = async () => {
     try {
       setLoading(true);
-      // Appeler l'API et mettre à jour les états
+      let url = 'https://dummyjson.com/posts';
+      if (searchTerm) {
+        url = `https://dummyjson.com/posts/search?q=${encodeURIComponent(searchTerm)}`;
+      }
+
+      const res = await fetch(url);
+      const data = await res.json();
+      setPosts(data.posts || []);
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Erreur lors du chargement');
     } finally {
       setLoading(false);
     }
   };
   
   // TODO: Exercice 1 - Utiliser useEffect pour charger les posts quand les filtres changent
+  useEffect(() => {
+    fetchPosts();
+  }, [searchTerm]);
   
   // TODO: Exercice 4 - Implémenter la fonction pour charger plus de posts
   
