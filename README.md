@@ -84,8 +84,12 @@ _Votre réponse pour l'exercice 2 :_
 
 ```
 Expliquez votre solution ici
-[Ajoutez vos captures d'écran]
+  - `useDebounce` pour retarder la recherche afin d’éviter les appels API inutiles
+  - `useLocalStorage` pour sauvegarder la préférence de mode d’affichage (`défilement infini` ou `pagination`)
+  - Intégration de ces hooks dans `usePosts` et `App.jsx`
 ```
+
+![Résultat Exercice 2](./screenshots/exercice2.png)
 
 ### Exercice 3 : Optimisation et Context
 

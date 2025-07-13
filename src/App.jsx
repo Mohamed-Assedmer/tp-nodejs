@@ -3,6 +3,7 @@ import './App.css';
 import PostList from './components/PostList';
 import PostSearch from './components/PostSearch';
 import usePosts from './hooks/usePosts'; 
+import useLocalStorage from './hooks/useLocalStorage';
 // TODO: Exercice 3 - Importer ThemeToggle
 // TODO: Exercice 3 - Importer ThemeProvider et useTheme
 // TODO: Exercice 1 - Importer le hook usePosts
@@ -11,13 +12,16 @@ import usePosts from './hooks/usePosts';
 function App() {
   // État local pour la recherche
   const [searchTerm, setSearchTerm] = useState('');
+  const [infiniteScroll, setInfiniteScroll] = useLocalStorage('infiniteScroll', true);
   // TODO: Exercice 4 - Ajouter l'état pour le tag sélectionné
   
   // TODO: Exercice 1 - Utiliser le hook usePosts pour récupérer les posts
   // Exemple: const { posts, loading, error } = usePosts();
-  const { posts, loading, error } = usePosts({ searchTerm });
+  const { posts, loading, error } = usePosts({ searchTerm, infinite: infiniteScroll });
   
   // TODO: Exercice 2 - Utiliser useLocalStorage pour le mode de défilement
+
+  const toggleScrollMode = () => setInfiniteScroll(prev => !prev);
   
   // TODO: Exercice 3 - Utiliser useCallback pour les gestionnaires d'événements
   
@@ -38,6 +42,9 @@ function App() {
       </header>
       
       <main>
+      <button onClick={toggleScrollMode} className="btn btn-outline-primary mb-3">
+        Mode : {infiniteScroll ? "Défilement Infini" : "Pagination"}
+      </button>
         <PostSearch onSearch={handleSearchChange} />
         
         {/* TODO: Exercice 1 - Afficher un message d'erreur si nécessaire */}
@@ -46,7 +53,7 @@ function App() {
         {/* TODO: Exercice 4 - Ajouter le composant PostDetails */}
         
         {/* TODO: Exercice 1 - Passer les props nécessaires à PostList */}
-        <PostList posts={posts} loading={loading} /> 
+        <PostList posts={posts} loading={loading} infiniteScroll={infiniteScroll} /> 
       </main>
       
       <footer className="pt-3 mt-4 text-center border-top">
