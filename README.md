@@ -70,7 +70,7 @@ _Votre réponse pour l'exercice 1 :_
 
 ```
 Expliquez votre solution ici
-![alt text](image.png)
+![Résultat Exercice 1](./screenshots/exercice1.png)
 ```
 
 ### Exercice 2 : Hooks Personnalisés
