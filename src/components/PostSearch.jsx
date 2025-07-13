@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 // TODO: Exercice 3 - Importer useTheme
+import { useTheme } from '../context/ThemeContext';
 
 /**
  * Composant de recherche de posts
@@ -20,14 +21,15 @@ function PostSearch({
   // TODO: Exercice 3 - Utiliser le hook useTheme
   
   // TODO: Exercice 3 - Utiliser useCallback pour optimiser le gestionnaire
-  const handleSearchChange = (e) => {
+  const handleSearchChange = useCallback((e) => {
     const value = e.target.value;
     setSearchInput(value);
     onSearch(value);
-  };
+  }, [onSearch]);
   
   // TODO: Exercice 3 - Appliquer les classes CSS en fonction du thème
-  const themeClasses = '';
+  const { theme } = useTheme();
+  const inputClassName = `form-control ${theme === 'dark' ? 'input-dark' : ''}`;
   
   return (
     <div className="mb-4">
@@ -39,7 +41,7 @@ function PostSearch({
             </span>
             <input
               type="text"
-              className="form-control"
+              className={inputClassName}
               placeholder="Rechercher des articles..."
               value={searchInput}
               onChange={handleSearchChange}
@@ -64,4 +66,4 @@ function PostSearch({
 }
 
 // TODO: Exercice 3 - Utiliser React.memo pour optimiser les rendus
-export default PostSearch;
+export default React.memo(PostSearch);

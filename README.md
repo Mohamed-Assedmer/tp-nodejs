@@ -104,8 +104,28 @@ _Votre réponse pour l'exercice 3 :_
 
 ```
 Expliquez votre solution ici
-[Ajoutez vos captures d'écran]
+- `ThemeContext.js` :
+  - Définit un contexte avec les valeurs `theme` et `toggleTheme`
+  - Utilise `useLocalStorage('theme', 'light')` pour mémoriser le choix de l’utilisateur
+
+- `ThemeToggle.js` :
+  - Utilise `useTheme` pour accéder au thème courant et à la fonction de toggle
+  - Affiche un bouton `Thème : Clair/Sombre`
+
+- `PostSearch.js` :
+  - Récupère le thème via `useTheme`
+  - Applique une classe CSS spécifique à l’input (`input-dark`) en mode sombre
+  - Modifie dynamiquement la couleur du placeholder via CSS
+  - Utilise `useCallback` pour `handleSearchChange`
+  - Utilise `React.memo` pour éviter les re-rendus si les props ne changent pas
+
+- `App.jsx` :
+  - Enveloppe tout avec `<ThemeProvider>`
+  - Utilise `useCallback` pour le `handleSearchChange` passé à `PostSearch`
 ```
+
+![Résultat Exercice 3 clair mode](./screenshots/exercice3-clair.png)
+![Résultat Exercice 3 dark mode](./screenshots/exercice3-dark.png)
 
 ### Exercice 4 : Fonctionnalités avancées
 
