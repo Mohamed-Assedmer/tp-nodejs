@@ -70,8 +70,9 @@ _Votre réponse pour l'exercice 1 :_
 
 ```
 Expliquez votre solution ici
-![Résultat Exercice 1](./screenshots/exercice1.png)
 ```
+
+![Résultat Exercice 1](./screenshots/exercice1.png)
 
 ### Exercice 2 : Hooks Personnalisés
 
